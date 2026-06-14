@@ -6,7 +6,7 @@ import PageHero from '../components/PageHero'
 import { cars, makes, vehicleTypes } from '../data/cars'
 import { useLang } from '../i18n/LangContext'
 
-const fuelTypes = ['Petrol', 'Gasoline', 'Diesel']
+const fuelTypes = ['Petrol', 'Gasoline', 'Diesel', 'Hybrid', 'Electric']
 const driveTypes = ['AWD/4WD', '2WD', 'FWD', 'RWD']
 const transmissions = ['Automatic', 'Manual']
 

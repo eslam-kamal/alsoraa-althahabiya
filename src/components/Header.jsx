@@ -6,6 +6,9 @@ import { useLang } from '../i18n/LangContext'
 
 const vehicleBrands = [
   { label: 'All Brands', labelAr: 'جميع الماركات', to: '/vehicles' },
+  { label: 'ROX', to: '/vehicles?make=Rox' },
+  { label: 'Dongfeng', to: '/vehicles?make=Dongfeng' },
+  { label: 'Forthing', to: '/vehicles?make=Forthing' },
   { label: 'Chevrolet', to: '/vehicles?make=Chevrolet' },
   { label: 'GMC', to: '/vehicles?make=GMC' },
   { label: 'Mercedes-Benz', to: '/vehicles?make=Mercedes-Benz' },
@@ -16,12 +19,6 @@ const vehicleBrands = [
   { label: 'Toyota', to: '/vehicles?make=Toyota' },
   { label: 'Hyundai', to: '/vehicles?make=Hyundai' },
   { label: 'KIA', to: '/vehicles?make=KIA' },
-]
-
-const externalBrands = [
-  { label: 'Dongfeng', href: 'https://dongfengiraq.com/search/' },
-  { label: 'Forthing', href: 'https://forthingiraq.com/' },
-  { label: 'ROX', href: 'https://roxiraq.com/' },
 ]
 
 export default function Header() {

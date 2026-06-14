@@ -8,14 +8,17 @@ import { useLang } from '../i18n/LangContext'
 
 // Car brand logos from car-logos.org (public CDN, reliable)
 const brandLogos = [
-  { brand: 'GMC',          logo: 'https://www.carlogos.org/car-logos/gmc-logo-2012.png' },
+  { brand: 'Rox',          logo: 'https://img.staticdj.com/c44eada151cb6151532dd39aa364f903_420x.png' },
+  { brand: 'Dongfeng',     logo: 'https://logos-world.net/wp-content/uploads/2021/08/Dongfeng-Logo.png' },
+  { brand: 'Forthing',     logo: 'https://1000logos.net/wp-content/uploads/2024/01/Forthing-Logo.png' },
+  { brand: 'GMC',          logo: 'https://www.carlogos.org/logo/GMC-logo-2200x600.png' },
   { brand: 'Cadillac',     logo: 'https://www.carlogos.org/car-logos/cadillac-logo-2021.png' },
-  { brand: 'Mercedes-Benz',logo: 'https://www.carlogos.org/car-logos/mercedes-benz-logo-2011.png' },
-  { brand: 'Chevrolet',    logo: 'https://www.carlogos.org/car-logos/chevrolet-logo-2013.png' },
-  { brand: 'Range Rover',  logo: 'https://www.carlogos.org/car-logos/land-rover-logo-2011.png' },
+  { brand: 'Mercedes-Benz',logo: 'https://www.carlogos.org/logo/Mercedes-Benz-logo-2011-1920x1080.png' },
+  { brand: 'Chevrolet',    logo: 'https://www.carlogos.org/logo/Chevrolet-logo-2013-2560x1440.png' },
+  { brand: 'Range Rover',  logo: 'https://pngimg.com/uploads/land_rover/land_rover_PNG79.png' },
   { brand: 'Toyota',       logo: 'https://www.carlogos.org/car-logos/toyota-logo-2020.png' },
-  { brand: 'KIA',          logo: 'https://www.carlogos.org/car-logos/kia-logo-2021.png' },
-  { brand: 'Jeep',         logo: 'https://www.carlogos.org/car-logos/jeep-logo-2007.png' },
+  { brand: 'KIA',          logo: 'https://www.carlogos.org/logo/Kia-logo-2560x1440.png' },
+  { brand: 'Jeep',         logo: 'https://www.carlogos.org/car-logos/jeep-logo-1993-download.png' },
   { brand: 'Hyundai',      logo: 'https://www.carlogos.org/car-logos/hyundai-logo-2011.png' },
 ]
 
@@ -47,7 +50,7 @@ export default function Home() {
     navigate(`/vehicles?${params.toString()}`)
   }
 
-  const featured = cars.filter(c => c.condition === tab).slice(0, 6)
+  const featured = cars.filter(c => c.condition === tab && ['Rox', 'Dongfeng', 'Forthing'].includes(c.make))
   const heroImage = cars.find(c => c.slug === 'chevrolet-tahoe-premier-awd-5-3l-v8-2026')?.hero || fallbackCarImage
 
   return (

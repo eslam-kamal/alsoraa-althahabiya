@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useLang } from '../i18n/LangContext'
 
+const DISMISSED_KEY = 'newsletter_popup_dismissed'
+
 const countries = {
   en: ['Iraq','UAE','Jordan','Saudi Arabia','Kuwait','Qatar','Bahrain','Egypt','Other'],
   ar: ['العراق','الإمارات','الأردن','المملكة العربية السعودية','الكويت','قطر','البحرين','مصر','أخرى'],
@@ -13,15 +15,19 @@ export default function NewsletterPopup() {
   const { lang, t } = useLang()
 
   useEffect(() => {
-    const seen = sessionStorage.getItem('nl_seen')
-    if (!seen) {
-      const timer = setTimeout(() => setVisible(true), 2000)
-      return () => clearTimeout(timer)
-    }
+    if (sessionStorage.getItem(DISMISSED_KEY) === 'true') return
+
+    const timer = setTimeout(() => {
+      if (sessionStorage.getItem(DISMISSED_KEY) !== 'true') {
+        setVisible(true)
+      }
+    }, 2000)
+
+    return () => clearTimeout(timer)
   }, [])
 
   const close = () => {
-    sessionStorage.setItem('nl_seen', '1')
+    sessionStorage.setItem(DISMISSED_KEY, 'true')
     setVisible(false)
   }
 
@@ -46,7 +52,12 @@ export default function NewsletterPopup() {
           <div className="absolute inset-0 bg-navy/40" />
         </div>
         <div className="sm:w-3/5 p-6 relative">
-          <button onClick={close} className="absolute top-3 right-3 text-gray-400 hover:text-gray-700">
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Close newsletter popup"
+            className="absolute top-3 right-3 text-gray-400 hover:text-gray-700"
+          >
             <X size={18} />
           </button>
           <h3 className="text-navy font-bold text-lg mb-1">{t.nlTitle}</h3>
